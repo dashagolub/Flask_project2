@@ -1,0 +1,6 @@
+flask
+gunicorn
+sqlalchemy
+sqlalchemy.orm
+psycopg2-binary
+datetime

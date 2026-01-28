@@ -2,8 +2,11 @@ from flask import Flask, request, jsonify, render_template_string
 from sqlalchemy import create_engine, Column, Integer, Float, DateTime
 from sqlalchemy.orm import declarative_base, sessionmaker
 from datetime import datetime
+import os
 
-DATABASE_URL = "postgresql://localhost/sensors"
+DATABASE_URL = os.environ.get("DATABASE_URL")
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is not set")
 engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)
 Base = declarative_base()
@@ -84,4 +87,5 @@ class SensorData(Base):
 
 
 #app.run(debug=True)
+Base.metadata.create_all(engine)
 app.run(host="0.0.0.0", port=5001, debug=True)
