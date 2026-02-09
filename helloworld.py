@@ -135,6 +135,13 @@ def get_chart_data():
 
     return jsonify(result)
 
+def delete_old_data():
+    session = Session()
+    border = datetime.utcnow() - timedelta(days=10)
+    session.query(SensorData).filter(SensorData.timestamp < border).delete()
+    session.commit()
+    session.close()
+
 class SensorData(Base):
     __tablename__ = "sensor_data"
 
@@ -146,4 +153,5 @@ class SensorData(Base):
 
 #app.run(debug=True) index
 Base.metadata.create_all(engine)
+delete_old_data()
 app.run(host="0.0.0.0", port=5001, debug=True)
