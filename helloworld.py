@@ -129,8 +129,7 @@ def get_chart_data():
     result = []
     for row in rows:
         result.append({
-            #"timestamp": row.timestamp.strftime("%Y-%m-%d"),
-            "timestamp": row.timestamp.isoformat(),
+            "timestamp": row.timestamp.strftime("%Y-%m-%d"),
             "water_level": row.water_level
         })
 
