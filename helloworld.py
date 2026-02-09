@@ -30,7 +30,7 @@ def index():
     <canvas id="waterChart" width="400" height="200"></canvas>
     <ul id="list"></ul>
     <script>
-        fetch('/data/chart')
+        fetch('/data/list')
             .then(response => response.json())
             .then(data => {
                 const list = document.getElementById('list');
@@ -96,7 +96,7 @@ def receive_data():
         "received": data
     })"""
 
-@app.route("/data", methods=["GET"])
+@app.route("/data/list", methods=["GET"])
 def get_data():
     session = Session()
     sensor_data = session.query(SensorData)\
@@ -117,10 +117,10 @@ def get_data():
 def get_chart_data():
     session = Session()
 
-    five_days_ago = datetime.utcnow() - timedelta(days=5)
+    days_chart = datetime.utcnow() - timedelta(days=5)
 
     rows = session.query(SensorData)\
-        .filter(SensorData.timestamp >= five_days_ago)\
+        .filter(SensorData.timestamp >= days_chart)\
         .order_by(SensorData.timestamp.asc())\
         .all()
 
