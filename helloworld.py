@@ -26,7 +26,7 @@ def index():
 <body>
     <h1>Bamboo Watering System</h1>
     <h2>Water Level Monitoring</h2>
-    <h2>Water Level (last 10 days)</h2>
+    <h2>Water Level (last 5 days)</h2>
     <canvas id="waterChart" width="400" height="200"></canvas>
     <ul id="list"></ul>
     <script>
@@ -36,7 +36,7 @@ def index():
                 const list = document.getElementById('list');
                 data.forEach(row => {
                     const item = document.createElement('li');
-                    item.textContent = `💧 ${row.water_level}% | 🕰️ ${row.timestamp}`;
+                    item.textContent = `💧 ${row.water_level}| 🕰️ ${row.timestamp}`;
                     list.appendChild(item);
                 });
             });
@@ -55,7 +55,7 @@ def index():
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Water level (%)',
+                        label: 'Water level',
                         data: values,
                         borderColor: 'blue',
                         fill: false,
@@ -66,7 +66,7 @@ def index():
                     scales: {
                         y: {
                             min: 0,
-                            max: 100
+                            max: 600
                         }
                     }
                 }
@@ -117,10 +117,10 @@ def get_data():
 def get_chart_data():
     session = Session()
 
-    ten_days_ago = datetime.utcnow() - timedelta(days=10)
+    five_days_ago = datetime.utcnow() - timedelta(days=5)
 
     rows = session.query(SensorData)\
-        .filter(SensorData.timestamp >= ten_days_ago)\
+        .filter(SensorData.timestamp >= five_days_ago)\
         .order_by(SensorData.timestamp.asc())\
         .all()
 
