@@ -37,7 +37,7 @@ def index():
                 const warning = document.getElementById('warning');
                 data.forEach(row => {
                     const item = document.createElement('li');
-                    const date = new Date(row.timestamp);
+                    const date = new Date(row.timestamp + "Z");
                     const localTime = date.toLocaleString('en-US', {
                         day: '2-digit',
                         month: '2-digit',
