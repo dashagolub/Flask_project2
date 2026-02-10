@@ -23,7 +23,7 @@ def index():
     <title>Bamboo Watering System</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body style="font-family: 'Arial', sans-serif; background-color: powderblue;">
+<body style="font-family: 'Arial', sans-serif; background-color: #C9FFF6;">
     <h1 style="text-align: center;">🎋Bamboo Watering System🎋</h1>
     <h2 id="warning" style="color: red; display: none; text-align: center;">⚠️ Water level is too low!</h2>
     <h2 style="text-align: center;">Water Level Monitoring (last 5 days)</h2>
