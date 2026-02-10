@@ -37,7 +37,7 @@ def index():
                 const warning = document.getElementById('warning');
                 data.forEach(row => {
                     const item = document.createElement('li');
-                    item.textContent = `💧 ${row.water_level}          🕰️ ${row.timestamp}`;
+                    item.textContent = `💧 ${row.water_level} 🕰️ ${row.timestamp}`;
                     list.appendChild(item);
                 });
                 if (data.length > 0 && data[0].water_level < 500) {
