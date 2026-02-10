@@ -24,7 +24,7 @@ def index():
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>Bamboo Watering System</h1>
+    <h1>🎋Bamboo Watering System🎋</h1>
     <h2 id="warning" style="color: red; display: none;">⚠️ Water level is too low!</h2>
     <h2>Water Level Monitoring (last 5 days)</h2>
     <canvas id="waterChart" width="400" height="200"></canvas>
@@ -40,7 +40,7 @@ def index():
                     item.textContent = `💧 ${row.water_level}| 🕰️ ${row.timestamp}`;
                     list.appendChild(item);
                 });
-                if (data.length > 0 && data[0].water_level < 600) {
+                if (data.length > 0 && data[0].water_level < 500) {
                     warning.style.display = 'block';
                 }
             });
