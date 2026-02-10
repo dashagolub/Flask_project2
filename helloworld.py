@@ -40,7 +40,7 @@ def index():
                     item.textContent = `💧 ${row.water_level}          🕰️ ${row.timestamp}`;
                     list.appendChild(item);
                 });
-                if (data.length > 0 && data[0].water_level < 600) {
+                if (data.length > 0 && data[0].water_level < 500) {
                     warning.style.display = 'block';
                 }
             });
