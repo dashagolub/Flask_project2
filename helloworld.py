@@ -25,8 +25,10 @@ def index():
 </head>
 <body>
     <h1>Bamboo Watering System</h1>
-    <h2>Water Level Monitoring</h2>
-    <h2>Water Level (last 5 days)</h2>
+    <h2 id="warning" style="color: red; display: none;">
+    ⚠️ Water level is too low!
+    </h2>
+    <h2>Water Level Monitoring (last 5 days)</h2>
     <canvas id="waterChart" width="400" height="200"></canvas>
     <ul id="list"></ul>
     <script>
