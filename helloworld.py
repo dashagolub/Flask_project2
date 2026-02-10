@@ -37,7 +37,15 @@ def index():
                 const warning = document.getElementById('warning');
                 data.forEach(row => {
                     const item = document.createElement('li');
-                    item.textContent = `💧 ${row.water_level} 🕰️ ${row.timestamp}`;
+                    const date = new Date(row.timestamp);
+                    const localTime = date.toLocaleString('en-US', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    item.textContent = `💧 ${row.water_level} 🕰️ ${localTime}`;
                     list.appendChild(item);
                 });
                 if (data.length > 0 && data[0].water_level < 500) {
