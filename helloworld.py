@@ -23,10 +23,10 @@ def index():
     <title>Bamboo Watering System</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-    <h1 style="text-align: center; font-family: 'Arial', sans-serif;">🎋Bamboo Watering System🎋</h1>
+<body style="font-family: 'Arial', sans-serif;">
+    <h1 style="text-align: center;">🎋Bamboo Watering System🎋</h1>
     <h2 id="warning" style="color: red; display: none; text-align: center;">⚠️ Water level is too low!</h2>
-    <h2 style="text-align: center; font-family: 'Arial', sans-serif;">Water Level Monitoring (last 5 days)</h2>
+    <h2 style="text-align: center;">Water Level Monitoring (last 5 days)</h2>
     <canvas id="waterChart" width="400" height="200"></canvas>
     <ul id="list"></ul>
     <script>
@@ -37,7 +37,7 @@ def index():
                 const warning = document.getElementById('warning');
                 data.forEach(row => {
                     const item = document.createElement('li');
-                    item.textContent = `💧 ${row.water_level}| 🕰️ ${row.timestamp}`;
+                    item.textContent = `💧 ${row.water_level}          🕰️ ${row.timestamp}`;
                     list.appendChild(item);
                 });
                 if (data.length > 0 && data[0].water_level < 600) {
@@ -154,8 +154,6 @@ class SensorData(Base):
     timestamp = Column(DateTime, default=datetime.utcnow)
 
 
-
-#app.run(debug=True) index
 Base.metadata.create_all(engine)
 delete_old_data()
 app.run(host="0.0.0.0", port=5001, debug=True)
