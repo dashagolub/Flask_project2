@@ -91,6 +91,7 @@ def index():
 
 @app.route("/data", methods=["POST"])
 def receive_data():
+    delete_old_data()
     data = request.json
     session = Session()
     sensor_data = SensorData(
@@ -163,5 +164,5 @@ class SensorData(Base):
 
 
 Base.metadata.create_all(engine)
-delete_old_data()
+
 app.run(host="0.0.0.0", port=5001, debug=True)
