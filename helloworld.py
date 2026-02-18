@@ -159,7 +159,7 @@ class SensorData(Base):
     __tablename__ = "sensor_data"
 
     id = Column(Integer, primary_key=True)
-    water_level = Column(Float)
+    water_level = Column(Integer)
     timestamp = Column(DateTime, default=datetime.utcnow)
 
 
